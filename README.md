@@ -1,8 +1,15 @@
-# Blueprint dla aplikacji Angular na potrzeby edukacyjne
+# Projekt startowy dla aplikacji "Lista Zadań".
+
+## Sprawdzenie wersji Angular CLI
+`ng --version`
+
+## Sprawdzenie wersji Node.js
+`node -v`
 
 ## Wymagania projektu
 - Angular CLI: 9.0.0-rc.7
-- Node: 12.13.1 lub inna wersja LTS
+- Node 10.9.0 lub wyższy, najlepiej wersja LTS. 
+- Projekt uruchamiany był z Node 12.13.1
 
 ## Instalacja Angular CLI w specyficznej wersji
 `npm install -g @angular/cli@9.0.0-rc.7`
