@@ -1,0 +1,52 @@
+<div class="container">
+  <nav class="row">
+    <div class="nav-wrapper">
+      <span class="brand-logo center">Lista zadań</span>
+    </div>
+  </nav>
+
+  <div class="row">
+    <button class="btn col s2 offset-s10">Dodaj zadanie</button>
+    <button class="btn col s2 offset-s10">Zakończ</button>
+  </div>
+
+  <div class="row">
+    <input
+      class="col s8"
+      type="text"
+      placeholder="Dodaj zadanie i datę wykonania"
+      #taskInput
+    />
+    <input class="col s2 disabled" type="date" #dateInput />
+    <button class="btn-floating">+</button>
+  </div>
+
+  <ul class="collection">
+    <li class="collection-item row">
+      <span class="col s10">1 Siłownia - 11.07 czwartek</span>
+      <div class="col s2 right-align">
+        <button class="btn-floating btn-small red mr-5">
+          <i class="material-icons">remove</i>
+        </button>
+        <button class="btn-floating btn-small green">
+          <i class="material-icons">check</i>
+        </button>
+      </div>
+    </li>
+    <li class="collection-item row">
+      <span class="col done">Sprzątanie kuwet</span>
+    </li>
+  </ul>
+
+  <h1>Dzisiaj brak zadań :-)</h1>
+
+  <button class="btn red">Wyczyść</button>
+
+  <footer class="page-footer mt-5">
+    <div class="footer-copyright">
+      <div class="container">
+        2019 © Lista zadań,All rights reserved.
+      </div>
+    </div>
+  </footer>
+</div>
