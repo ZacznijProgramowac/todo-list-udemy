@@ -15,9 +15,10 @@
       class="col s8"
       type="text"
       placeholder="Dodaj zadanie i datę wykonania"
+      (keyup)="0"
       #nameInput
     />
-    <input class="col s2 disabled" type="date" #dateInput />
+    <input class="col s2 disabled" type="date" (change)="0" #dateInput />
     <button
       class="btn-floating"
       (click)="
@@ -25,6 +26,7 @@
         nameInput.value = '';
         dateInput.value = ''
       "
+      [disabled]="nameInput.value === '' || dateInput.value === '' "
     >
       +
     </button>
@@ -52,7 +54,13 @@
 
   <h1>Dzisiaj brak zadań :-)</h1>
 
-  <button class="btn red" (click)="clearTasks()">Wyczyść</button>
+  <button
+    class="btn red"
+    (click)="clearTasks()"
+    [disabled]="tasks.length === 0"
+  >
+    Wyczyść
+  </button>
 
   <footer class="page-footer mt-5">
     <div class="footer-copyright">
