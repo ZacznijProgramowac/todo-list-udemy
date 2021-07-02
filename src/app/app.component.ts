@@ -6,14 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  config: { [key: string]: string | Date } = null;
+  config: { [key: string]: string } | null  = null;
 
   constructor() {
     setTimeout( () => {
       this.config = {
         title: 'Lista zadań',
         footer: '© Lista zadań zbudowana w Angularze.',
-        date: new Date(),
+        date: new Date().toDateString(),
       };
     }, 500);
   }
