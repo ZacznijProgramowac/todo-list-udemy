@@ -10,7 +10,7 @@ export class AppComponent {
   editMode = false;
   taskName = 'Sugerowane zadanie codzienne: odkurzanie';
   taskDate = '';
-  config: { [key: string]: string | Date } = null;
+  config: { [key: string]: string } | null  = null;
   tasks: Task[] = [
     {
       name: 'Siłownia',
@@ -44,7 +44,7 @@ export class AppComponent {
       this.config = {
         title: 'Lista zadań',
         footer: '© Lista zadań zbudowana w Angularze.',
-        date: new Date(),
+        date: new Date().toDateString(),
       };
     }, 500);
     this.sortTasks();
