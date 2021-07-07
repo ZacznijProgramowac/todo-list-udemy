@@ -15,9 +15,10 @@
       class="col s8"
       type="text"
       placeholder="Dodaj zadanie i datę wykonania"
+      (keyup)="onKeyUp($event)"
     />
     <input class="col s2 disabled" type="date" />
-    <button class="btn-floating">+</button>
+    <button class="btn-floating" (click)="createTask()">+</button>
   </div>
 
   <ul class="collection">
@@ -42,7 +43,7 @@
 
   <h1>Dzisiaj brak zadań :-)</h1>
 
-  <button class="btn red">Wyczyść</button>
+  <button class="btn red" (click)="clearTasks()">Wyczyść</button>
 
   <footer class="page-footer mt-5">
     <div class="footer-copyright">
