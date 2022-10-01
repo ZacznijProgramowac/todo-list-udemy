@@ -33,6 +33,20 @@ export class AppComponent {
       footer: 'Lista zadań zbudowana w Angularze',
       date: formatDate(new Date(), 'yyyy', 'pl-PL')
     }
-
   }
+
+  clearTasks(): void {
+    this.tasks = [];
+  }
+
+  addTask(name: string, deadline: string) {
+    let task: Task =
+    {
+      name,
+      deadline,
+      done: false
+    }
+    this.tasks.push(task);
+  }
+
 }

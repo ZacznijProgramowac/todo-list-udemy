@@ -11,18 +11,15 @@
   </div>
 
   <div class="row">
-    <input
-      class="col s8"
-      type="text"
-      placeholder="Dodaj zadanie i datę wykonania"
-    />
-    <input class="col s2 disabled" type="date" />
-    <button class="btn-floating">+</button>
+    <input class="col s8" type="text" placeholder="Dodaj zadanie i datę wykonania" #nameInput />
+    <input class="col s2 disabled" type="date" #dateInput />
+    <button class="btn-floating" (click)="addTask(nameInput.value,dateInput.value); 
+      nameInput.value=''; dateInput.value=''">+</button>
   </div>
 
   <ul class="collection">
     <li *ngFor="let task of tasks, let i = index" class="collection-item row">
-      <span class="col s10">{{i+1}} {{task.name}} {{task.deadline | date:'dd MMM EEEE'}}</span>
+      <span class="col s10">{{i+1}}| {{task.name}} - {{task.deadline | date:'dd MMM EEEE'}}</span>
       <div class="col s2 right-align">
         <button class="btn-floating btn-small red">
           <i class="material-icons">remove</i>
@@ -39,12 +36,12 @@
 
   <h1>Dzisiaj brak zadań :-)</h1>
 
-  <button class="btn red">Wyczyść</button>
+  <button class="btn red" (click)="clearTasks()">Wyczyść</button>
 
   <footer class="page-footer mt-5">
     <div class="footer-copyright">
       <div class="container">
-       {{config.date}} {{ config.footer }}
+        {{config.date}} {{ config.footer }}
       </div>
     </div>
   </footer>
