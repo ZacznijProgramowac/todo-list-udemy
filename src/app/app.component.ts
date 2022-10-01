@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Data } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -8,13 +8,16 @@ import { Data } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Lista zadań';
+  config: { [key: string]: string } | null = null;
 
-  get footer(): string {
-    return ' © Lista zadań,All rights reserved.';
-  }
-
-  get date(): Data{
-    return new Date;
+  constructor(){
+    setTimeout(() => {
+      this.config ={
+        title: 'Lista zadań',
+        footer: 'Lista zadań zbudowana w Angularze',
+        date: formatDate(new Date(),'yyyy','pl-PL')
+      }
+    },1000)
+    
   }
 }
