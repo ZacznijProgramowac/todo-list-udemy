@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Data } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,10 @@ export class AppComponent {
   title = 'Lista zadań';
 
   get footer(): string {
-    return '2022 © Lista zadań,All rights reserved.';
+    return ' © Lista zadań,All rights reserved.';
+  }
+
+  get date(): Data{
+    return new Date;
   }
 }
