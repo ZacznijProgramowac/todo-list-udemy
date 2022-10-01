@@ -1,7 +1,7 @@
 <div class="container">
   <nav class="row">
     <div class="nav-wrapper">
-      <span class="brand-logo center">{{config?.title | uppercase}}</span>
+      <span class="brand-logo center">{{config.title | uppercase}}</span>
     </div>
   </nav>
 
@@ -21,8 +21,8 @@
   </div>
 
   <ul class="collection">
-    <li class="collection-item row">
-      <span class="col s10">1 Siłownia - 11.07 czwartek</span>
+    <li *ngFor="let task of tasks, let i = index" class="collection-item row">
+      <span class="col s10">{{i+1}} {{task.name}} {{task.deadline | date:'dd MMM EEEE'}}</span>
       <div class="col s2 right-align">
         <button class="btn-floating btn-small red">
           <i class="material-icons">remove</i>
@@ -44,7 +44,7 @@
   <footer class="page-footer mt-5">
     <div class="footer-copyright">
       <div class="container">
-       {{config?.date}} {{ config?.footer }}
+       {{config.date}} {{ config.footer }}
       </div>
     </div>
   </footer>
