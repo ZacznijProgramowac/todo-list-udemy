@@ -26,10 +26,12 @@
       <li  class="collection-item row" *ngSwitchCase="false">
         <span class="col s10">{{i+1}}| {{task.name}} - {{task.deadline | date:'dd MMM EEEE'}}</span>
       <div class="col s2 right-align">
-        <button class="btn-floating btn-small red">
+        <button class="btn-floating btn-small red"
+        (click)="removeTask(task)">
           <i class="material-icons">remove</i>
         </button>
-        <button class="btn-floating btn-small green ml-5">
+        <button class="btn-floating btn-small green ml-5"
+          (click)="markTaskDone(task)">
           <i class="material-icons">check</i>
         </button>
       </div>
