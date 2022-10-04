@@ -1,50 +1,55 @@
 <div class="container">
   <nav class="row">
     <div class="nav-wrapper">
-      <span class="brand-logo center">Lista zadań</span>
+      <span class="brand-logo center">{{config.title | uppercase}}</span>
     </div>
   </nav>
 
   <div class="row">
-    <button class="btn col s2 offset-s10">Dodaj zadanie</button>
-    <button class="btn col s2 offset-s10">Zakończ</button>
+    <ng-container *ngIf="editMode ;then editOn; else editOff"></ng-container>
+    <ng-template #editOn>
+      <button class="btn col s2 offset-s10" (click)="changeButton()">Dodaj zadanie</button>
+    </ng-template>
+    <ng-template #editOff>
+      <button class="btn col s2 offset-s10" (click)="changeButton()">Zakończ</button>
+    </ng-template>
+  </div>
+  
+  <div class="row" *ngIf="!editMode">
+    <input class="col s8" type="text" placeholder="Dodaj zadanie i datę wykonania" [(ngModel)]="taskName" />
+    <input class="col s2 disabled" type="date" [(ngModel)]="taskDate" />
+    <button class="btn-floating" (click)="addTask()" [disabled]="taskName ==='' || taskDate ===''">+</button>
   </div>
 
-  <div class="row">
-    <input
-      class="col s8"
-      type="text"
-      placeholder="Dodaj zadanie i datę wykonania"
-    />
-    <input class="col s2 disabled" type="date" />
-    <button class="btn-floating">+</button>
-  </div>
-
-  <ul class="collection">
-    <li class="collection-item row">
-      <span class="col s10">1 Siłownia - 11.07 czwartek</span>
+  <ul class="collection" *ngIf="tasks.length > 0 ; else noTasks">
+    <ng-container *ngFor="let task of tasks, let i = index" [ngSwitch]="task.done">
+      <li  class="collection-item row" *ngSwitchCase="false">
+        <span class="col s10">{{i+1}}| {{task.name}} - {{task.deadline | date:'dd MMM EEEE'}}</span>
       <div class="col s2 right-align">
-        <button class="btn-floating btn-small red">
+        <button class="btn-floating btn-small red"
+        (click)="removeTask(task)">
           <i class="material-icons">remove</i>
         </button>
-        <button class="btn-floating btn-small green ml-5">
+        <button class="btn-floating btn-small green ml-5"
+          (click)="markTaskDone(task)">
           <i class="material-icons">check</i>
         </button>
       </div>
     </li>
-    <li class="collection-item row">
-      <span class="col done">Sprzątanie kuwet</span>
+    <li class="collection-item row" *ngSwitchCase="true">
+      <span class="col done">{{task.name}} </span>
     </li>
+  </ng-container>
   </ul>
-
-  <h1>Dzisiaj brak zadań :-)</h1>
-
-  <button class="btn red">Wyczyść</button>
+  <ng-template #noTasks>
+    <h1>Dzisiaj brak zadań :-)</h1>
+  </ng-template>
+  <button class="btn red" (click)="clearTasks()" [disabled]="tasks.length === 0">Wyczyść</button>
 
   <footer class="page-footer mt-5">
     <div class="footer-copyright">
       <div class="container">
-        2020 © Lista zadań,All rights reserved.
+        {{config.date}} {{ config.footer }}
       </div>
     </div>
   </footer>
