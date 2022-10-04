@@ -10,6 +10,9 @@ import { Task } from './tasks';
 })
 export class AppComponent {
   config: { [key: string]: string } | null = null;
+  taskName: string = 'Domyśle zdanie: Odkurzanie'
+  taskDate: string = '';
+  editMode: boolean = true;
   tasks: Task[] = [
     {
       name: 'Wyrzucić śmieci',
@@ -23,6 +26,10 @@ export class AppComponent {
       name: 'Zrobić zakupy',
       deadline: '2022-10-03',
       done: false
+    },{
+      name: 'Zrobić obiad',
+      deadline: '2022-10-03',
+      done: true
     }
   ];
 
@@ -39,14 +46,20 @@ export class AppComponent {
     this.tasks = [];
   }
 
-  addTask(name: string, deadline: string) {
+  addTask() {
     let task: Task =
     {
-      name,
-      deadline,
+      name: this.taskName,
+      deadline: this.taskDate,
       done: false
     }
     this.tasks.push(task);
+    this.taskName ='';
+    this.taskDate='';
+  }
+
+  changeButton(){
+    this.editMode = !this.editMode;
   }
 
 }
